@@ -41,21 +41,23 @@ public void basefilter() {
 		 last=query.substring(index2, query.length());
 		 System.out.println(last);
 }
-public void conditions() {
+public String conditions() {
 		 System.out.println("Conditions: ");
 		 Pattern p2= Pattern.compile("([\\w]+[ ]?)((<=)|(>=)|(<>)|=|<|>)([ ]?[']?[\\w]+[']?)");
 		 Matcher m2= p2.matcher(last);
 		 while(m2.find()) {
 			 System.out.println(m2.group());
 		 }
+		 return "in conditions";
 }
-public void operator() {
+public String operator() {
 		 for(String operators:token) { 
 			 if((operators.equalsIgnoreCase("and"))||(operators.equalsIgnoreCase("or"))||(operators.equalsIgnoreCase("not")))
 			 System.out.println("Logical operators in statement: " +operators);  
 		 }  
+		 return "in operator";
 }
-public void selectInfo() {
+public String selectInfo() {
 		System.out.println("selected fields/information from the given query");
 		int index3=token.indexOf("from");
 		
@@ -65,6 +67,7 @@ public void selectInfo() {
 			String itrstr= iterator.next();
 			System.out.println(itrstr.replace(","," "));
 		}		
+		return "selectinfo checked";
 }
 public void order() {
 		if(token.contains("order")) {			
@@ -90,48 +93,20 @@ public void aggregate() {
 	        System.out.println(m.group());		
 }
 public void goal5() {
-	    String csvFile = "/tmp/mozilla_sapient0/ipl.csv";
+	    String csvFile = "ipl.csv";
         BufferedReader br = null;
         String csvSplit = ",";
         String line = "";
         String heading=null;
-        String[] words=null;
-		String [] arr= null;
-	//	int l=0;
-		int k=0;
+       // String[] words=null;
 		  try {
 			   br = new BufferedReader(new FileReader(csvFile));
-			    arr= query.split(" ");
 	            heading=br.readLine();
-	        	words = heading.split("csvSplit");
-		    
-	/*	    for(int i=0;i<arr.length;i++)
-	         {  
-		    	if(arr[i].equals("from"))
-	        	{
-	        	  l=i-1;
-	        	 System.out.println("selected fields/information from the given query");
-	        	 for(int x=1;x<=l;x++)
-	        	 {
-	        		System.out.println(arr[x]); 
-	        	 }
-	        	}
-	         }*/
-	      
-	         
-	            for(int i=0;i<4;i++) {
-	            	for(int j=0;j<18;j++) {
-	            		if((arr[i].replace("csvSplit","")).equals(words[j])) {
-	            	     k=j;
-	            	     System.out.println(k);
-	            	 while ((line = br.readLine()) != null) 
-	     	            {
-	     	                String[] str = line.split(csvSplit);
-	     	                System.out.println(str[k]);
-	     	            }  
-	            		}
-	            	}
-	            }
+	            System.out.println(heading);
+	        //	words = heading.split("csvSplit");
+	        	 while ((line = br.readLine()) != null) {
+	                 String[] data= line.split(csvSplit);	             
+	             }
 	        	
 		        } 
 	        catch(Exception e) {

@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Goal3 {
 
 	public void goalHead() {
-	       String csvFile = "/tmp/mozilla_sapient0/ipl.csv";
+	       String csvFile = "ipl.csv";
 	        BufferedReader br = null;
 	        String csvSplitBy = ",";
 
