@@ -119,7 +119,7 @@ public void goal5() {
 	         }*/
 	      
 	         
-	            for(int i=0;i<condition.size();i++) {
+	            for(int i=0;i<4;i++) {
 	            	for(int j=0;j<18;j++) {
 	            		if((arr[i].replace("csvSplit","")).equals(words[j])) {
 	            	     k=j;
